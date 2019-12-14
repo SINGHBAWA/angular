@@ -1,0 +1,10 @@
+table {
+  width:100%;
+}
+.table-margin {
+  margin: 25px;
+}
+th.center {
+  text-align: center;
+  min-width: 100px;
+}
