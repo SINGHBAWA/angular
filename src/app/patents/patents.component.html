@@ -1,5 +1,7 @@
 <h1>Patents</h1>
 
+<div [innerHTML]="news.news"></div>
+
 <div class="layout-xs table-margin">
   <table mat-table [dataSource]="patents" class="mat-elevation-z8">
 
@@ -39,5 +41,6 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
 
 </div>

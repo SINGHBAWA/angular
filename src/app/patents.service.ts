@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Patent } from './patent';
+import { Patent, News } from './patent';
 import { tap, map } from 'rxjs/operators';
 import { MessageService } from './message.service';
 
@@ -9,7 +9,9 @@ import { MessageService } from './message.service';
   providedIn: 'root'
 })
 export class PatentsService {
-  private patentsUrl = 'http://127.0.0.1:8000/patents/';
+
+  private patentsUrl = 'http://127.0.0.1:8000/api/patents/';
+  private newsUrl = 'http://127.0.0.1:8000/api/patents/get_news/';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -24,6 +26,15 @@ export class PatentsService {
       return this.http.get<Patent[]>(this.patentsUrl).pipe(
         map(patents => patents),
         tap( _ => this.log(`fetched heros`))
+      );
+    }
+
+
+
+    getNews(): Observable<News> {
+      return this.http.get<News>(this.newsUrl).pipe(
+        map(news => news),
+        tap( _ => this.log(`fetched news`))
       );
     }
 
